@@ -23,6 +23,6 @@ namespace Dapper.ConnectionWrapper
 
         Task<T> QueryFirstOrDefaultAsync<T>(IDbConnectionProvider dbConnectionProvider, string commandText, object parameters = null, CommandType? commandType = CommandType.StoredProcedure, IDbTransaction transaction = null, int? commandTimeout = null);
 
-        void QueryMultiple(IDbConnectionProvider dbConnectionProvider, string commandText, Action<SqlMapper.GridReader> readDataAction, object parameters = null, CommandType? commandType = CommandType.StoredProcedure, IDbTransaction transaction = null, int? commandTimeout = null);
+        void QueryMultiple(IDbConnectionProvider dbConnectionProvider, string commandText, Action<object> readDataAction, object parameters = null, CommandType? commandType = CommandType.StoredProcedure, IDbTransaction transaction = null, int? commandTimeout = null);
     }
 }

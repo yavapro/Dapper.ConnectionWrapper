@@ -20,7 +20,7 @@ namespace Dapper.ConnectionWrapper
             IDbConnectionProvider dbConnectionProvider,
             string commandText,
             object parameters = null,
-            CommandType? commandType = CommandType.StoredProcedure,
+            CommandType? commandType = CommandType.Text,
             IDbTransaction transaction = null,
             int? commandTimeout = null)
         {
@@ -49,7 +49,7 @@ namespace Dapper.ConnectionWrapper
             IDbConnectionProvider dbConnectionProvider,
             string commandText, 
             object parameters = null, 
-            CommandType? commandType = CommandType.StoredProcedure, 
+            CommandType? commandType = CommandType.Text, 
             IDbTransaction transaction = null, 
             int? commandTimeout = null)
         {
@@ -78,7 +78,7 @@ namespace Dapper.ConnectionWrapper
             IDbConnectionProvider dbConnectionProvider,
             string commandText,
             object parameters = null,
-            CommandType? commandType = CommandType.StoredProcedure,
+            CommandType? commandType = CommandType.Text,
             IDbTransaction transaction = null,
             int? commandTimeout = null)
         {
@@ -107,7 +107,7 @@ namespace Dapper.ConnectionWrapper
             IDbConnectionProvider dbConnectionProvider,
             string commandText,
             object parameters = null,
-            CommandType? commandType = CommandType.StoredProcedure,
+            CommandType? commandType = CommandType.Text,
             IDbTransaction transaction = null,
             int? commandTimeout = null)
         {
@@ -136,7 +136,7 @@ namespace Dapper.ConnectionWrapper
             IDbConnectionProvider dbConnectionProvider,
             string commandText,
             object parameters = null,
-            CommandType? commandType = CommandType.StoredProcedure,
+            CommandType? commandType = CommandType.Text,
             IDbTransaction transaction = null,
             int? commandTimeout = null)
         {
@@ -165,7 +165,7 @@ namespace Dapper.ConnectionWrapper
             IDbConnectionProvider dbConnectionProvider,
             string commandText,
             object parameters = null,
-            CommandType? commandType = CommandType.StoredProcedure,
+            CommandType? commandType = CommandType.Text,
             IDbTransaction transaction = null,
             int? commandTimeout = null)
         {
@@ -190,9 +190,9 @@ namespace Dapper.ConnectionWrapper
         public void QueryMultiple(
             IDbConnectionProvider dbConnectionProvider,
             string commandText,
-            Action<SqlMapper.GridReader> readDataAction,
+            Action<object> readDataAction,
             object parameters = null,
-            CommandType? commandType = CommandType.StoredProcedure,
+            CommandType? commandType = CommandType.Text,
             IDbTransaction transaction = null,
             int? commandTimeout = null)
         {
@@ -225,7 +225,7 @@ namespace Dapper.ConnectionWrapper
             IDbConnectionProvider dbConnectionProvider,
             string commandText,
             object parameters = null,
-            CommandType? commandType = CommandType.StoredProcedure,
+            CommandType? commandType = CommandType.Text,
             IDbTransaction transaction = null,
             int? commandTimeout = null)
         {
@@ -259,7 +259,7 @@ namespace Dapper.ConnectionWrapper
             IDbConnectionProvider dbConnectionProvider,
             string commandText,
             object parameters = null,
-            CommandType? commandType = CommandType.StoredProcedure,
+            CommandType? commandType = CommandType.Text,
             IDbTransaction transaction = null,
             int? commandTimeout = null)
         {
