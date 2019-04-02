@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <PackageVersion>0.0.1</PackageVersion>
+        <Title>Dapper.ConnectionWrapper</Title>
+        <Authors>Vladimir Yarovenko &lt;yavapro@gmail.com&gt;</Authors>
+        <PackageProjectUrl>https://github.com/yavapro/Dapper.ConnectionWrapper</PackageProjectUrl>
+        <PackageTags>Dapper ConnectionProvider</PackageTags>
+        <Description>Dapper wrapper to save database exceptions</Description>
+        <RepositoryUrl>https://github.com/yavapro/Dapper.ConnectionWrapper.git</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Dapper" Version="1.60.6" />
+      <PackageReference Include="System.Data.SqlClient" Version="4.6.0" />
+    </ItemGroup>
+
+</Project>
