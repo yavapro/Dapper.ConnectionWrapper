@@ -1,3 +1,5 @@
+using System;
+
 namespace Dapper.ConnectionWrapper
 {
     using System.Data;
@@ -9,6 +11,15 @@ namespace Dapper.ConnectionWrapper
 
         public SqlConnectionProvider(string sqlConnectionString)
         {
+            if (sqlConnectionString == null) 
+            {
+                throw new ArgumentNullException(nameof(sqlConnectionString));
+            }
+            if (string.IsNullOrWhiteSpace(sqlConnectionString)) 
+            {
+                throw new ArgumentException(nameof(sqlConnectionString));
+            }
+            
             this.sqlConnectionString = sqlConnectionString;
         }
         
