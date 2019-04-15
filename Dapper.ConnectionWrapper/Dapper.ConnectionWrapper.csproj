@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <PackageVersion>0.0.5</PackageVersion>
+        <PackageVersion>0.0.7</PackageVersion>
         <Title>Dapper.ConnectionWrapper</Title>
         <Authors>Vladimir Yarovenko &lt;yavapro@gmail.com&gt;</Authors>
         <PackageProjectUrl>https://github.com/yavapro/Dapper.ConnectionWrapper</PackageProjectUrl>
@@ -14,6 +14,7 @@
     <ItemGroup>
       <PackageReference Include="Dapper" Version="1.60.6" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
       <PackageReference Include="System.Data.SqlClient" Version="4.6.0" />
     </ItemGroup>
 
