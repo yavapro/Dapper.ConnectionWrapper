@@ -277,6 +277,37 @@ namespace Dapper.ConnectionWrapper
                 }
             }
         }
+        
+        /// <summary>
+        /// Execute a command that returns multiple result sets
+        /// </summary>
+        public async Task QueryMultipleAsync(
+            IDbConnectionProvider dbConnectionProvider,
+            string commandText,
+            Action<object> readDataAction,
+            object parameters = null,
+            CommandType? commandType = CommandType.Text,
+            IDbTransaction transaction = null,
+            int? commandTimeout = null)
+        {
+            using (var connection = dbConnectionProvider.GetConnection())
+            {
+                var commandDefinition = new CommandDefinition(commandText, parameters, transaction, commandTimeout, commandType);
+
+                SqlMapper.GridReader gridReader;
+
+                try
+                {
+                    gridReader = await connection.QueryMultipleAsync(commandDefinition);
+                }
+                catch (DbException ex)
+                {
+                    throw CreateDbCommandException(ex, commandDefinition);
+                }
+
+                readDataAction(gridReader);
+            }
+        }
 
         private Exception CreateDbCommandException(DbException exception, CommandDefinition commandDefinition)
         {

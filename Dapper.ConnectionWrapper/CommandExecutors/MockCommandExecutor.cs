@@ -80,5 +80,13 @@ namespace Dapper.ConnectionWrapper
             int? commandTimeout = null)
         {
         }
+        
+        public virtual Task QueryMultipleAsync(IDbConnectionProvider dbConnectionProvider, string commandText,
+            Action<object> readDataAction,
+            object parameters = null, CommandType? commandType = CommandType.Text, IDbTransaction transaction = null,
+            int? commandTimeout = null)
+        {
+            return Task.Factory.StartNew(readDataAction, sqlResult);
+        }
     }
 }
