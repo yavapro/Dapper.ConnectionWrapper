@@ -5,7 +5,7 @@ namespace Dapper.ConnectionWrapper
     using System.Data;
     using System.Data.Common;
     using System.Threading.Tasks;
-    
+
     public class DapperCommandExecutor : IDbCommandExecutor
     {
         private const int MaxParametersStringLength = 1024;
@@ -27,7 +27,7 @@ namespace Dapper.ConnectionWrapper
             using (var connection = dbConnectionProvider.GetConnection())
             {
                 var commandDefinition = new CommandDefinition(commandText, parameters, transaction, commandTimeout, commandType);
-                
+
                 try
                 {
                     return connection.Execute(commandDefinition);
@@ -40,23 +40,23 @@ namespace Dapper.ConnectionWrapper
         }
 
         /// <summary>
-        /// Execute parameterized SQL asynchronously  
+        /// Execute parameterized SQL asynchronously
         /// </summary>
         /// <returns>
         /// Number of rows affected
         /// </returns>
         public async Task<int> ExecuteAsync(
             IDbConnectionProvider dbConnectionProvider,
-            string commandText, 
-            object parameters = null, 
-            CommandType? commandType = CommandType.Text, 
-            IDbTransaction transaction = null, 
+            string commandText,
+            object parameters = null,
+            CommandType? commandType = CommandType.Text,
+            IDbTransaction transaction = null,
             int? commandTimeout = null)
         {
             using (var connection = dbConnectionProvider.GetConnection())
             {
                 var commandDefinition = new CommandDefinition(commandText, parameters, transaction, commandTimeout, commandType);
-                
+
                 try
                 {
                     return await connection.ExecuteAsync(commandDefinition);
@@ -85,7 +85,7 @@ namespace Dapper.ConnectionWrapper
             using (var connection = dbConnectionProvider.GetConnection())
             {
                 var commandDefinition = new CommandDefinition(commandText, parameters, transaction, commandTimeout, commandType);
-                
+
                 try
                 {
                     return connection.ExecuteScalar<T>(commandDefinition);
@@ -114,7 +114,7 @@ namespace Dapper.ConnectionWrapper
             using (var connection = dbConnectionProvider.GetConnection())
             {
                 var commandDefinition = new CommandDefinition(commandText, parameters, transaction, commandTimeout, commandType);
-                
+
                 try
                 {
                     return await connection.ExecuteScalarAsync<T>(commandDefinition);
@@ -172,7 +172,7 @@ namespace Dapper.ConnectionWrapper
             using (var connection = dbConnectionProvider.GetConnection())
             {
                 var commandDefinition = new CommandDefinition(commandText, parameters, transaction, commandTimeout, commandType);
-                
+
                 try
                 {
                     return await connection.QueryAsync<T>(commandDefinition);
@@ -232,12 +232,12 @@ namespace Dapper.ConnectionWrapper
             using (var connection = dbConnectionProvider.GetConnection())
             {
                 var commandDefinition = new CommandDefinition(commandText, parameters, transaction, commandTimeout, commandType);
-                
+
                 try
                 {
                     return await connection.QueryFirstOrDefaultAsync<T>(
                         commandDefinition.CommandText,
-                        commandDefinition.Parameters, 
+                        commandDefinition.Parameters,
                         commandDefinition.Transaction,
                         commandDefinition.CommandTimeout,
                         commandDefinition.CommandType);
@@ -277,7 +277,7 @@ namespace Dapper.ConnectionWrapper
                 }
             }
         }
-        
+
         /// <summary>
         /// Execute a command that returns multiple result sets
         /// </summary>
@@ -312,11 +312,11 @@ namespace Dapper.ConnectionWrapper
         private Exception CreateDbCommandException(DbException exception, CommandDefinition commandDefinition)
         {
             string parameters;
-            
+
             if (commandDefinition.Parameters != null)
             {
                 parameters = commandDefinition.Parameters.ToString();
-                
+
                 if (parameters.Length > MaxParametersStringLength)
                 {
                     parameters = parameters.Substring(0, MaxParametersStringLength);

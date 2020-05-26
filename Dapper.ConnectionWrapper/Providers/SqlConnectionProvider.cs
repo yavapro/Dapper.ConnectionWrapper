@@ -6,7 +6,7 @@ namespace Dapper.ConnectionWrapper
 
     public class SqlConnectionProvider : IDbConnectionProvider
     {
-        private readonly string sqlConnectionString;
+        private readonly string connectionString;
 
         public SqlConnectionProvider(string sqlConnectionString)
         {
@@ -20,17 +20,28 @@ namespace Dapper.ConnectionWrapper
                 throw new ArgumentException(nameof(sqlConnectionString));
             }
 
-            this.sqlConnectionString = sqlConnectionString;
+            this.connectionString = sqlConnectionString;
         }
 
         public IDbConnection GetConnection()
         {
-            return new SqlConnection(sqlConnectionString);
+            return new SqlConnection(connectionString);
         }
 
-        public IDbConnection GetConnection(params object[] args)
+        public IDbConnectionProvider FormatConnectionString(params object[] args)
         {
-            return new SqlConnection(string.Format(sqlConnectionString, args));
+            if (args == null)
+            {
+                throw new ArgumentNullException(nameof(args));
+            }
+
+            if (args.Length == 0)
+            {
+                throw new ArgumentException(nameof(args));
+            }
+
+            var connection = String.Format(connectionString, args);
+            return new SqlConnectionProvider(connection);
         }
     }
 }
