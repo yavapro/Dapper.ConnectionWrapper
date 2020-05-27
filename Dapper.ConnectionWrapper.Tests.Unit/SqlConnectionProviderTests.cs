@@ -44,22 +44,5 @@ namespace Dapper.ConnectionWrapper.Tests.Unit
             Assert.Equal(connectionString, connection.ConnectionString);
             Assert.IsType<SqlConnection>(connection);
         }
-
-        [Fact]
-        public void FormatConnectionStringTest()
-        {
-            var connectionStr = "Server={0};";
-            var arg = "test";
-
-            var provider = new SqlConnectionProvider(connectionStr);
-            Assert.NotNull(provider);
-
-            var formattedProvider = provider.FormatConnectionString(arg);
-
-            var connection = formattedProvider.GetConnection();
-            Assert.NotNull(connection);
-            Assert.Equal(String.Format(connectionStr, arg), connection.ConnectionString);
-            Assert.IsType<SqlConnection>(connection);
-        }
     }
 }

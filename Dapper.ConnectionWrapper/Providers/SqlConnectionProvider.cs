@@ -27,21 +27,5 @@ namespace Dapper.ConnectionWrapper
         {
             return new SqlConnection(connectionString);
         }
-
-        public IDbConnectionProvider FormatConnectionString(params object[] args)
-        {
-            if (args == null)
-            {
-                throw new ArgumentNullException(nameof(args));
-            }
-
-            if (args.Length == 0)
-            {
-                throw new ArgumentException(nameof(args));
-            }
-
-            var connection = String.Format(connectionString, args);
-            return new SqlConnectionProvider(connection);
-        }
     }
 }

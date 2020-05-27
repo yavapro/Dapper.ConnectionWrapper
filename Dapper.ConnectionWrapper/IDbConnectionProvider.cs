@@ -5,7 +5,5 @@ namespace Dapper.ConnectionWrapper
     public interface IDbConnectionProvider
     {
         IDbConnection GetConnection();
-
-        IDbConnectionProvider FormatConnectionString(params object[] args);
     }
 }
